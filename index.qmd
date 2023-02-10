@@ -1,11 +1,36 @@
 ---
-title: "week-3-website"
+title: "DALLAS EDUCATION MAP"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
 ```{r}
-1 + 1
+library(tidyverse)
+library(tidycensus)
+library(leaflet)
+
+dallas_bachelors <- 
+  get_acs(geography = "tract",
+          variables = "DP02_0068P",
+          year = 2020,
+          state = "TX",
+          county = "Dallas",
+          geometry = TRUE)
+
+pal <- colorNumeric(
+  palette = "magma",
+  domain = dallas_bachelors$estimate
+)
+
+leaflet() %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%
+  addPolygons(data = dallas_bachelors,
+              color = ~pal(estimate),
+              weight = 0.5,
+              smoothFactor = 0.2,
+              fillOpacity = 0.5,
+              label = ~estimate) %>%
+  addLegend(position = "bottomright",
+            pal = pal,
+            values = dallas_bachelors$estimate,
+            title = "% with bachelor's<br/>degree")
 ```
