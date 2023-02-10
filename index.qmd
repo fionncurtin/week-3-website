@@ -13,4 +13,8 @@ library(tidycensus)
 library(leaflet)
 
 read_rds("morris_plot.rds")
+
+read_rds("montana_plot.rds")
+
+read_rds("us_plot.rds")
 ```
