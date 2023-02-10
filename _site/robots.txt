@@ -1,1 +1,1 @@
-Sitemap: https://12d0cb54-ab94-45cb-955e-a2a714ff714d.netlify.app/sitemap.xml
+Sitemap: https://quartopub.com/sites/dfionncurtin/week-3-website/sitemap.xml
